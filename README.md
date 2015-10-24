@@ -18,6 +18,9 @@ minilcddisp は，小さいLCD を使って Raspberry Pi で各種表示をす�
 * 表示可能 LCD は Oled704_1306_13SU です．
     * Oled704_1306_13SU : 大阪 日本橋 デジットで販売している 128x32 ドット表示のミニOLEDディスプレイです．
 * Raspberry Pi と，glibc 以外の依存ライブラリはありません．Raspberry Pi でよく使われている WiringPi も使っていません．
+* minilcddisp の起動には，Raspberry Pi の GPIO と /dev/spidev0.0 へのアクセス権が必要です．
+    * 手っ取り早い方法は，minilcddisp を sudo コマンドで root 権限で起動することです．
+    * minilcddisp は，root 権限で起動された場合，root 権限で必要な最小限の処理を行った後は uid=65534(nobody) に降格します．
 
 OPTIONS
 -------
