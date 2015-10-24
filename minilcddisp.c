@@ -173,19 +173,20 @@ int main(int argc,char *argv[])
 	if(do_test){
 		ret = Use_LCD_Driver->funccall(_LCD_CMD_TEST,NULL);
 		assert(ret == 0);
-	}
-	if(disp_str[0] != (char)('\0')){
-		ret = Display(disp_str);
-		assert(ret == 0);
 	} else {
-		char buf[128];
-		int slen;
-		while(fgets(buf,sizeof(buf)-1,stdin) != NULL){
-			if((slen = strlen(buf)) <= 1)
-				continue;
-			buf[slen-1] = (char)('\0');
-			ret = Display(buf);
+		if(disp_str[0] != (char)('\0')){
+			ret = Display(disp_str);
 			assert(ret == 0);
+		} else {
+			char buf[128];
+			int slen;
+			while(fgets(buf,sizeof(buf)-1,stdin) != NULL){
+				if((slen = strlen(buf)) <= 1)
+					continue;
+				buf[slen-1] = (char)('\0');
+				ret = Display(buf);
+				assert(ret == 0);
+			}
 		}
 	}
 	ret = Use_LCD_Driver->funccall(_LCD_CMD_FINI,NULL);
