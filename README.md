@@ -6,7 +6,7 @@ minilcddisp - Mini LCD display for Raspberry Pi
 SYNOPSIS
 --------
 
-`minilcddisp` [`-vtcrd`] `Display Command`
+`minilcddisp` [`-vtcrd`] `"Display Command"`
 
 DESCRIPTION
 -----------
@@ -43,11 +43,15 @@ Display Command
 Display Command は，minilcddisp への表示命令です．
 以下の表示命令が使用できます．表示命令は，文字列の終わりか，改行まで有効です
 
-`C`
+`"C"`
   画面をクリアします．
 
-`T x y fontno Text`
+`"T x y fontno Text"`
   (x,y) の位置に，fontno で示すフォント番号に `Text` を描画します．
+  コマンドラインから指定する場合は，Tコマンド全体をダブルクォーテーションでくくってください．
+
+EXAMPLE
+-------
 
 FILES
 -----
