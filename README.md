@@ -6,7 +6,7 @@ minilcddisp - Mini LCD display for Raspberry Pi
 SYNOPSIS
 --------
 
-`minilcddisp` [`-vtcrd4`] `"Display Command"`
+`minilcddisp` [`-vtcrd4`] [`"Display Command"`]
 
 DESCRIPTION
 -----------
@@ -47,8 +47,9 @@ OPTIONS
 Display Command
 ---------------
 
-Display Command は，minilcddisp への表示命令です．
+Display Command は，minilcddisp への表示命令です．コマンドラインから指定するか，コマンドラインで指定しない場合は，標準入力から読み取ります．
 以下の表示命令が使用できます．表示命令は，文字列の終わりか，改行まで有効です
+
 
 `"C"`
   画面をクリアします．
