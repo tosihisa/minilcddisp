@@ -116,7 +116,8 @@ INSTALL
 -------
 
 あらかじめ gcc 等をインストールしてください．
-make clean all でビルドできるはずです．
+
+minilcddisp は，C言語で作成しており，make clean all でビルドできるはずです．
 
 私は，Raspbian Jessie でビルドと動作を確認しています．
 
