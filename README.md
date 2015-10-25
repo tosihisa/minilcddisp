@@ -3,7 +3,7 @@ NAME
 
 minilcddisp - Mini LCD display for Raspberry Pi
 
-![表示画像](https://www.netfort.gr.jp/~tosihisa/notebook/lib/exe/fetch.php/raspberrypi/img_0395.jpg =640x480)
+<img src="https://www.netfort.gr.jp/~tosihisa/notebook/lib/exe/fetch.php/raspberrypi/img_0395.jpg" alt="Drawing" style="width: 400px;"/>
 
 SYNOPSIS
 --------
