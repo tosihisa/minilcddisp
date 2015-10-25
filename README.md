@@ -65,6 +65,8 @@ Display Command は，minilcddisp への表示命令です．コマンドライ�
 EXAMPLE
 -------
 
+https://www.netfort.gr.jp/~tosihisa/notebook/doku.php/raspberrypi/minilcddisp にコマンド実行例を掲載しています．
+
 FILES
 -----
 
@@ -106,6 +108,8 @@ Toshihisa Tanaka
 
 SEE ALSO
 --------
+
+https://www.netfort.gr.jp/~tosihisa/notebook/doku.php/raspberrypi/minilcddisp
 
 LICENSE
 -------
