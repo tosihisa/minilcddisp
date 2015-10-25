@@ -21,7 +21,7 @@ minilcddisp は，小さいLCD を使って Raspberry Pi で各種表示をす�
 * minilcddisp の起動には，Raspberry Pi の GPIO と /dev/spidev0.0 へのアクセス権が必要です．
     * 手っ取り早い方法は，minilcddisp を sudo コマンドで root 権限で起動することです．
     * minilcddisp は，root 権限で起動された場合，root 権限で必要な最小限の処理を行った後は uid=65534(nobody) に降格します．
-* eth0 の IPv4 アドレスを表示する事ができます．Raspberry Pi で Headless (モニタ無し)で使用している場合，IPアドレスを忘れてしまうことがありますが，minilcddisp を使うことで，小さいLCDにIPアドレスを出すことが出来ます．IPアドレスを得るために外部コマンドは使っていません．
+* eth0 の IPv4 アドレスを表示する事ができます．Raspberry Pi を Headless (モニタ無し)で使用している場合，IPアドレスを忘れてしまってリモート接続するのに思い出す時間がかかってしまいますが，minilcddisp を使うことで，小さいLCDにIPアドレスを出すことが出来ます．IPアドレスを得るために外部コマンドは使っていません．
 
 OPTIONS
 -------
