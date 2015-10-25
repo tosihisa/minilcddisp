@@ -60,7 +60,7 @@ static char disp_str[128];
 
 static void print_version(void)
 {
-	printf("%s: version 00.01 (BUILD:%s %s)\n",myname,__DATE__,__TIME__);
+	printf("%s: version 00.20 (BUILD:%s %s)\n",myname,__DATE__,__TIME__);
 }
 
 static int getIPv4addr(const char *dev,char *ipaddr)
