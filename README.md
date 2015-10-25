@@ -70,6 +70,21 @@ FILES
 ENVIRONMENT
 -----------
 
+必要な環境変数は特にありませんが，Raspberry Pi と LCD は以下の様に結線してください．
+
+`Oled704_1306_13SU`
+````
+Raspberry Pi <==> Oled704_1306_13SU
+-----------------------------------
+ GND ------------------ GND
+ 3v3 ------------------ VIN
+ GPIO 10(MOSI) -------- DATA
+ GPIO 11(SCLK) -------- CLK
+ GPIO 8(CE0) ---------- CS
+ GPIO 4 --------------- D/C
+ GPIO 17 -------------- RST
+````
+
 DIAGNOSTICS
 -----------
 
