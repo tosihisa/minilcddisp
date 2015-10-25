@@ -123,3 +123,5 @@ make clean all でビルドできるはずです．
 インストールですが，ビルドして出来上がる minilcddisp を，手動で /usr/local/bin 等にコピーしてください．
 minilcddisp は，フォントもプログラムに入るので，実行ファイルは minilcddisp 一つだけです．
 
+Raspberry Pi 側では，raspi-config を起動して SPI を使用できるようにしてください．
+
