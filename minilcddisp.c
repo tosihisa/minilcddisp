@@ -31,6 +31,12 @@ THE SOFTWARE.
 #include <assert.h>
 #include <string.h>
 
+#include <sys/socket.h>
+#include <sys/ioctl.h>
+#include <netinet/in.h>
+#include <net/if.h>
+#include <arpa/inet.h>
+
 #include "minilcddisp.h"
 
 extern int Oled704_1306_13SU(int cmd,void *args);
@@ -48,6 +54,7 @@ static int do_test = 0;
 static int do_clear = 0;
 static int do_reset = 0;
 static int do_rotation = 0;
+static int do_ipv4 = 0;
 
 static char disp_str[128];
 
@@ -56,13 +63,35 @@ static void print_version(void)
 	printf("%s: version 00.01 (BUILD:%s %s)\n",myname,__DATE__,__TIME__);
 }
 
+static int getIPv4addr(const char *dev,char *ipaddr)
+{
+	int sockfd = -1;
+	struct ifreq ifr;
+	int ret = -1;
+
+	sockfd = socket(AF_INET, SOCK_DGRAM, 0);
+	assert(sockfd >= 0);
+
+	ifr.ifr_addr.sa_family = AF_INET;
+	strncpy(ifr.ifr_name,dev, IFNAMSIZ-1);
+
+	ret = ioctl(sockfd, SIOCGIFADDR, &ifr);
+	assert(ret == 0);
+	ret = close(sockfd);
+	assert(ret == 0);
+
+	ret = snprintf(ipaddr,sizeof("000.000.000.000"),"%s",inet_ntoa(((struct sockaddr_in *)&ifr.ifr_addr)->sin_addr));
+	assert(ret <= (int)(sizeof("000.000.000.000") -1) );
+	return 0;
+}
+
 static int parse_option(int argc,char *argv[])
 {
 	int opt;
 
 	/* 小文字のオプションは，プログラム全体の振舞いを決める */
 	/* 大文字のオプションは，LCDドライバ固有の振舞いを決める */
-	while ((opt = getopt(argc, argv, "vtcrdO:o")) != -1){
+	while ((opt = getopt(argc, argv, "vtcrdO:o4")) != -1){
 		switch(opt){
 			case 'v':	/* バージョン出力して終了 */
 				print_version();
@@ -94,6 +123,9 @@ static int parse_option(int argc,char *argv[])
 				break;
 			case 'o':	/* 可能であれば，表示を180度回転する(上下左右反転) */
 				do_rotation = 1;
+				break;
+			case '4':	/* eth0 の IPv4 アドレスを表示する */
+				do_ipv4 = 1;
 				break;
 		}
 	}
@@ -172,6 +204,13 @@ int main(int argc,char *argv[])
 	}
 	if(do_test){
 		ret = Use_LCD_Driver->funccall(_LCD_CMD_TEST,NULL);
+		assert(ret == 0);
+	} else if(do_ipv4){
+		char _wk1[2048];
+		ret = getIPv4addr("eth0",_wk1);
+		assert(ret == 0);
+		snprintf(disp_str,sizeof(disp_str),"T 0 0 3 %s",_wk1);
+		ret = Display(disp_str);
 		assert(ret == 0);
 	} else {
 		if(disp_str[0] != (char)('\0')){
