@@ -6,7 +6,7 @@ minilcddisp - Mini LCD display for Raspberry Pi
 SYNOPSIS
 --------
 
-`minilcddisp` [`-vtcrd`] `"Display Command"`
+`minilcddisp` [`-vtcrd4`] `"Display Command"`
 
 DESCRIPTION
 -----------
